@@ -39,24 +39,24 @@ CREATE TABLE biometrics (
 
 -- Create Nutrition Table
 CREATE TABLE nutrition (
-    Nutrition_ID INT PRIMARY KEY AUTO_INCREMENT,
-    User_ID INT,  -- Foreign key referencing Users
-    Food_Item VARCHAR(255),  -- Food item name
-    Calories FLOAT,  -- Calories in kcal
-    Protein FLOAT,  -- Protein in grams
-    Carbohydrates FLOAT,  -- Carbohydrates in grams
-    Fats FLOAT,  -- Fats in grams
-    Meal_Date DATETIME,  -- Date and time of meal
-    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  -- Establishes the relationship
+    Nutrition_ID INT PRIMARY KEY,
+    User_ID INT,  
+    Food_Item VARCHAR(255),  
+    Calories FLOAT, 
+    Protein FLOAT,  
+    Carbohydrates FLOAT,  
+    Fats FLOAT, 
+    Meal_Date DATETIME, 
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID) 
 );
 
 -- Create Sleep Data Table
 CREATE TABLE sleep_data (
-    Sleep_ID INT PRIMARY KEY AUTO_INCREMENT,
-    User_ID INT,  -- Foreign key referencing Users
-    Sleep_Duration FLOAT,  -- Sleep duration in hours
-    Sleep_Quality VARCHAR(50),  -- E.g., Deep sleep, Light sleep, REM
-    Sleep_Start DATETIME,  -- Start time of sleep
-    Sleep_End DATETIME,  -- End time of sleep
-    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  -- Establishes the relationship
+    Sleep_ID INT PRIMARY KEY,
+    User_ID INT,  
+    Sleep_Duration FLOAT,  
+    Sleep_Quality VARCHAR(50),  
+    Sleep_Start DATETIME,  
+    Sleep_End DATETIME,
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID)
 );
