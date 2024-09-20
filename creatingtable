@@ -1,58 +1,58 @@
-●	Table users {
-●	  User_ID int [pk, increment]  
-●	  First_Name varchar(100)
-●	  Last_Name varchar(100)
-●	  DOB date  
-●	  Gender varchar(10)
-●	  Height float  
-●	  Weight float  
-●	  Email varchar(100)
-●	  Phone_Number varchar(20)
-●	}
-●	
-●	Table activities {
-●	  Activity_ID int [pk, increment]  
-●	  User_ID int  
-●	  Activity_Type varchar(100)  
-●	  Steps int  
-●	  Distance float  
-●	  Calories_Burned float  
-●	  Duration float  
-●	  Activity_Date datetime  
-●	}
-●	
-●	Table biometrics {
-●	  Biometrics_ID int [pk, increment]
-●	  User_ID int 
-●	  Heart_Rate int  
-●	  Blood_Pressure varchar(20)  
-●	  Blood_Oxygen float  
-●	  Weight float 
-●	  BMI float  
-●	  Measurement_Date datetime 
-●	}
-●	
-●	Table nutrition {
-●	  Nutrition_ID int [pk, increment] 
-●	  User_ID int 
-●	  Food_Item varchar(255)  
-●	  Calories float  
-●	  Protein float 
-●	  Carbohydrates float  
-●	  Fats float 
-●	  Meal_Date datetime  
-●	}
-●	
-●	Table sleep_data {
-●	  Sleep_ID int [pk, increment]  
-●	  User_ID int  
-●	  Sleep_Duration float  
-●	  Sleep_Quality varchar(50)  
-●	  Sleep_Start datetime 
-●	  Sleep_End datetime 
-●	}
-●	
-●	Ref: activities.User_ID > users.User_ID  // One user can have multiple activities
-●	Ref: biometrics.User_ID > users.User_ID  // One user can have multiple biometric records
-●	Ref: nutrition.User_ID > users.User_ID  // One user can have multiple nutrition records
-●	Ref: sleep_data.User_ID > users.User_ID  // One user can have multiple sleep records
+Table users {
+	  User_ID int [pk, increment]  
+	  First_Name varchar(100)
+	  Last_Name varchar(100)
+	  DOB date  
+	  Gender varchar(10)
+	  Height float  
+	  Weight float  
+	  Email varchar(100)
+	  Phone_Number varchar(20)
+	}
+	
+	Table activities {
+	  Activity_ID int [pk, increment]  
+	  User_ID int  
+	  Activity_Type varchar(100)  
+	  Steps int  
+	  Distance float  
+	  Calories_Burned float  
+	  Duration float  
+	  Activity_Date datetime  
+	}
+	
+	Table biometrics {
+	  Biometrics_ID int [pk, increment]
+	  User_ID int 
+	  Heart_Rate int  
+	  Blood_Pressure varchar(20)  
+	  Blood_Oxygen float  
+	  Weight float 
+	  BMI float  
+	  Measurement_Date datetime 
+	}
+	
+	Table nutrition {
+	  Nutrition_ID int [pk, increment] 
+	  User_ID int 
+	  Food_Item varchar(255)  
+	  Calories float  
+	  Protein float 
+	  Carbohydrates float  
+	  Fats float 
+	  Meal_Date datetime  
+	}
+	
+	Table sleep_data {
+	  Sleep_ID int [pk, increment]  
+	  User_ID int  
+	  Sleep_Duration float  
+	  Sleep_Quality varchar(50)  
+	  Sleep_Start datetime 
+	  Sleep_End datetime 
+	}
+	
+	Ref: activities.User_ID > users.User_ID  // One user can have multiple activities
+	Ref: biometrics.User_ID > users.User_ID  // One user can have multiple biometric records
+	Ref: nutrition.User_ID > users.User_ID  // One user can have multiple nutrition records
+	Ref: sleep_data.User_ID > users.User_ID  // One user can have multiple sleep records
