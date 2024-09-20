@@ -1,58 +1,62 @@
-Table users {
-	  User_ID int [pk, increment]  
-	  First_Name varchar(100)
-	  Last_Name varchar(100)
-	  DOB date  
-	  Gender varchar(10)
-	  Height float  
-	  Weight float  
-	  Email varchar(100)
-	  Phone_Number varchar(20)
-	}
-	
-	Table activities {
-	  Activity_ID int [pk, increment]  
-	  User_ID int  
-	  Activity_Type varchar(100)  
-	  Steps int  
-	  Distance float  
-	  Calories_Burned float  
-	  Duration float  
-	  Activity_Date datetime  
-	}
-	
-	Table biometrics {
-	  Biometrics_ID int [pk, increment]
-	  User_ID int 
-	  Heart_Rate int  
-	  Blood_Pressure varchar(20)  
-	  Blood_Oxygen float  
-	  Weight float 
-	  BMI float  
-	  Measurement_Date datetime 
-	}
-	
-	Table nutrition {
-	  Nutrition_ID int [pk, increment] 
-	  User_ID int 
-	  Food_Item varchar(255)  
-	  Calories float  
-	  Protein float 
-	  Carbohydrates float  
-	  Fats float 
-	  Meal_Date datetime  
-	}
-	
-	Table sleep_data {
-	  Sleep_ID int [pk, increment]  
-	  User_ID int  
-	  Sleep_Duration float  
-	  Sleep_Quality varchar(50)  
-	  Sleep_Start datetime 
-	  Sleep_End datetime 
-	}
-	
-	Ref: activities.User_ID > users.User_ID  // One user can have multiple activities
-	Ref: biometrics.User_ID > users.User_ID  // One user can have multiple biometric records
-	Ref: nutrition.User_ID > users.User_ID  // One user can have multiple nutrition records
-	Ref: sleep_data.User_ID > users.User_ID  // One user can have multiple sleep records
+
+CREATE TABLE users (
+    User_ID INT PRIMARY,
+    First_Name VARCHAR(100),
+    Last_Name VARCHAR(100),
+    DOB DATE,  
+    Gender VARCHAR(10),
+    Height FLOAT,  
+    Weight FLOAT,  
+    Email VARCHAR(100),
+    Phone_Number VARCHAR(20)
+);
+
+
+CREATE TABLE activities (
+    Activity_ID INT PRIMARY KEY AUTO_INCREMENT,
+    User_ID INT,  
+    Activity_Type VARCHAR(100), 
+    Steps INT, 
+    Distance FLOAT,  
+    Calories_Burned FLOAT,  
+    Duration FLOAT,  
+    Activity_Date DATETIME,  
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID) 
+);
+
+-- Create Biometrics Table
+CREATE TABLE biometrics (
+    Biometrics_ID INT PRIMARY,
+    User_ID INT,
+    Heart_Rate INT, 
+    Blood_Pressure VARCHAR(20), 
+    Blood_Oxygen FLOAT, 
+    Weight FLOAT, 
+    BMI FLOAT,  
+    Measurement_Date DATETIME,  
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID)
+);
+
+-- Create Nutrition Table
+CREATE TABLE nutrition (
+    Nutrition_ID INT PRIMARY KEY AUTO_INCREMENT,
+    User_ID INT,  -- Foreign key referencing Users
+    Food_Item VARCHAR(255),  -- Food item name
+    Calories FLOAT,  -- Calories in kcal
+    Protein FLOAT,  -- Protein in grams
+    Carbohydrates FLOAT,  -- Carbohydrates in grams
+    Fats FLOAT,  -- Fats in grams
+    Meal_Date DATETIME,  -- Date and time of meal
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  -- Establishes the relationship
+);
+
+-- Create Sleep Data Table
+CREATE TABLE sleep_data (
+    Sleep_ID INT PRIMARY KEY AUTO_INCREMENT,
+    User_ID INT,  -- Foreign key referencing Users
+    Sleep_Duration FLOAT,  -- Sleep duration in hours
+    Sleep_Quality VARCHAR(50),  -- E.g., Deep sleep, Light sleep, REM
+    Sleep_Start DATETIME,  -- Start time of sleep
+    Sleep_End DATETIME,  -- End time of sleep
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  -- Establishes the relationship
+);
