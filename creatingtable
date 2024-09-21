@@ -3,10 +3,10 @@ CREATE TABLE users (
     User_ID INT PRIMARY KEY ,
     First_Name VARCHAR(100),
     Last_Name VARCHAR(100),
-    DOB DATE,  -- Date of birth
+    DOB DATE, 
     Gender VARCHAR(10),
-    Height FLOAT,  -- Height in meters
-    Weight FLOAT,  -- Weight in kilograms
+    Height FLOAT, 
+    Weight FLOAT, 
     Email VARCHAR(100),
     Phone_Number VARCHAR(20)
 );
@@ -14,49 +14,49 @@ CREATE TABLE users (
 -- Create Activities Table
 CREATE TABLE activities (
     Activity_ID INT PRIMARY KEY,
-    User_ID INT,  -- Foreign key referencing Users
-    Activity_Type VARCHAR(100),  -- E.g., Walking, Running, Cycling
-    Steps INT,  -- Steps taken
-    Distance FLOAT,  -- Distance in kilometers
-    Calories_Burned FLOAT,  -- Calories burned during activity
-    Duration FLOAT,  -- Duration in hours or minutes
-    Activity_Date DATETIME,  -- Date and time of activity
-    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  -- Establishes the relationship
+    User_ID INT,  
+    Activity_Type VARCHAR(100), 
+    Steps INT,  
+    Distance FLOAT,  
+    Calories_Burned FLOAT, 
+    Duration FLOAT, 
+    Activity_Date DATETIME, 
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  
 );
 
 -- Create Biometrics Table
 CREATE TABLE biometrics (
     Biometrics_ID INT PRIMARY KEY,
-    User_ID INT,  -- Foreign key referencing Users
-    Heart_Rate INT,  -- Heart rate in bpm
-    Blood_Pressure VARCHAR(20),  -- Blood pressure (e.g., 120/80 mmHg)
-    Blood_Oxygen FLOAT,  -- Blood oxygen level in percentage
-    Weight FLOAT,  -- Weight in kilograms
-    BMI FLOAT,  -- Body Mass Index
-    Measurement_Date DATETIME,  -- Date and time of measurement
-    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  -- Establishes the relationship
+    User_ID INT,  
+    Heart_Rate INT, 
+    Blood_Pressure VARCHAR(20),  
+    Blood_Oxygen FLOAT,  
+    Weight FLOAT, 
+    BMI FLOAT,  
+    Measurement_Date DATETIME,  
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID) 
 );
 
 -- Create Nutrition Table
 CREATE TABLE nutrition (
     Nutrition_ID INT PRIMARY KEY,
-    User_ID INT,  -- Foreign key referencing Users
-    Food_Item VARCHAR(255),  -- Food item name
-    Calories FLOAT,  -- Calories in kcal
-    Protein FLOAT,  -- Protein in grams
-    Carbohydrates FLOAT,  -- Carbohydrates in grams
-    Fats FLOAT,  -- Fats in grams
-    Meal_Date DATETIME,  -- Date and time of meal
-    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  -- Establishes the relationship
+    User_ID INT,  
+    Food_Item VARCHAR(255),  
+    Calories FLOAT,  
+    Protein FLOAT, 
+    Carbohydrates FLOAT,  
+    Fats FLOAT,  
+    Meal_Date DATETIME,
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID) 
 );
 
 -- Create Sleep Data Table
 CREATE TABLE sleep_data (
     Sleep_ID INT PRIMARY KEY,
-    User_ID INT,  -- Foreign key referencing Users
-    Sleep_Duration FLOAT,  -- Sleep duration in hours
-    Sleep_Quality VARCHAR(50),  -- E.g., Deep sleep, Light sleep, REM
-    Sleep_Start DATETIME,  -- Start time of sleep
-    Sleep_End DATETIME,  -- End time of sleep
-    FOREIGN KEY (User_ID) REFERENCES users(User_ID)  -- Establishes the relationship
+    User_ID INT,  
+    Sleep_Duration FLOAT,  
+    Sleep_Quality VARCHAR(50),  
+    Sleep_Start DATETIME,  
+    Sleep_End DATETIME,  
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID) 
 );
